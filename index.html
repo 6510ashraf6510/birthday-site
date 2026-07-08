@@ -841,7 +841,12 @@ margin-top:500px;
             <div id="tree-crown"></div>
         </div>
  
+        <div id="growth-side-line" style="display:none; opacity:0; z-index:14; font-family:'Dancing Script', cursive; font-size:clamp(18px,4vw,28px); color:#fff; text-align:center; padding:14px 18px; border-radius:18px; background:rgba(188,19,254,0.12); border:1px solid rgba(188,19,254,0.25); box-shadow:0 0 25px rgba(188,19,254,0.18);">
+            Wait... just a moment ✨
+        </div>
+
         <h2 id="growth-message"></h2>
+ 
  
         <button class="btn-neon" id="growth-next" onclick="startDoraemonGame()">
         tap here Boss ❤️
@@ -1395,13 +1400,30 @@ Happy 19th Birthday, Boss! ❤️🎉.
  
         function startGrowthPage() {
             transitionTo("growth-page");
+
+            // tree grow hone se pehle side message (5 sec)
+            const sideLine = document.getElementById('growth-side-line');
+            if (sideLine) {
+                sideLine.style.display = 'block';
+                sideLine.style.opacity = '1';
+            }
+
+            setTimeout(() => {
+                if (sideLine) {
+                    sideLine.style.opacity = '0';
+                    setTimeout(() => { if (sideLine) sideLine.style.display = 'none'; }, 700);
+                }
+            }, 5000);
+
+            // heart tree crown smooth
             setTimeout(buildHeartCrown, 900);   // start earlier to avoid hang feeling
             setTimeout(typeGrowthMessage, 5200);
 
         }
- 
+
         function typeGrowthMessage() {
     const text = "Tumhe bhi apni life me bilkul iss heart tree ki tarah grow karna hai Boss ❤️🌳";
+ 
  
     let i = 0;
     const msg = document.getElementById("growth-message");
