@@ -781,7 +781,7 @@ margin-top:500px;
  
 <body>
  
-    <audio id="git-audio" src="https://files.catbox.moe/8b8mft.mp3" preload="auto" loop></audio>
+    <audio id="git-audio" src="https://files.catbox.moe/y55bgj.mp3" preload="auto" loop></audio>
  
     <div id="welcome-gate">
         <h1 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 20px; color: var(--gold);">A Special Message...</h1>
@@ -822,6 +822,12 @@ margin-top:500px;
             Hh toh (future Advocate) meri saari case aapko hi solve krni h toh aap jldi se successful ho jaao.. ✨
         </div>
 
+        <!-- Created by Ashraf (small) -->
+        <div style="margin-top:8px; font-family:'Dancing Script', cursive; font-size:1.05rem; color:rgba(233,213,255,0.75); text-shadow:0 0 12px rgba(188,19,254,0.25); z-index:6;">
+            Created by Ashraf ✨
+        </div>
+
+
  
         <div class="btn-container">
             <span class="side-hint hint-left">tap kro boss idhar 👇</span>
@@ -851,6 +857,8 @@ margin-top:500px;
         <button class="btn-neon" id="growth-next" onclick="startDoraemonGame()">
         tap here Boss ❤️
         </button>
+
+
 
         <p style="display:none"> </p>
 
@@ -1424,7 +1432,6 @@ Happy 19th Birthday, Boss! ❤️🎉.
         function typeGrowthMessage() {
     const text = "Tumhe bhi apni life me bilkul iss heart tree ki tarah grow karna hai Boss ❤️🌳";
  
- 
     let i = 0;
     const msg = document.getElementById("growth-message");
     msg.innerHTML = "";
@@ -1435,12 +1442,16 @@ Happy 19th Birthday, Boss! ❤️🎉.
  
         if (i >= text.length) {
             clearInterval(timer);
+            // after message ends: show Next button
             document.getElementById("growth-next").style.display = "inline-block";
+
+
         }
     }, 45);
 }
 
         // ===== Hero: Butterfly carries crown and sets it above palak =====
+
         function runPalakCrownAnimation() {
             const butterfly = document.getElementById('july-butterfly');
             const crownToPlace = document.getElementById('palak-top-crown');
