@@ -79,8 +79,122 @@
             transform: scale(1.1) translateZ(0); transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1; overflow: hidden;
         }
- 
+
         .page.active { visibility: visible; opacity: 1; transform: scale(1) translateZ(0); z-index: 10; }
+
+        /* ===== Hero: 9 July + Crown + Butterfly Palak ===== */
+        .july-special {
+            z-index: 4;
+            margin: 18px 0 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .july-date {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            padding: 10px 22px;
+            border-radius: 999px;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            background: rgba(212, 175, 55, 0.08);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.12);
+        }
+
+        .july-date .crown {
+            font-size: 28px;
+            filter: drop-shadow(0 0 10px rgba(212,175,55,0.35));
+            animation: crownGlow 2.4s ease-in-out infinite;
+        }
+
+        .crown-into-place {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: -10px;
+            font-size: 30px;
+            opacity: 0;
+            pointer-events: none;
+            filter: drop-shadow(0 0 12px rgba(212,175,55,0.5));
+        }
+
+        @keyframes carryCrownAndSet {
+            0% { opacity: 0; transform: translate(-50%, 0) scale(0.8) rotate(-10deg); }
+            20% { opacity: 1; }
+            60% { opacity: 1; transform: translate(-50%, -20px) scale(1.05) rotate(6deg); }
+            100% { opacity: 1; transform: translate(-50%, -10px) scale(1) rotate(0deg); }
+        }
+
+        .carry-run {
+            animation: carryCrownAndSet 3.2s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+        }
+
+        @keyframes crownGlow {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.95; }
+            50% { transform: translateY(-2px) scale(1.05); opacity: 1; }
+        }
+
+        .july-date .date-text {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 900;
+            letter-spacing: 1px;
+            font-size: clamp(1.8rem, 4.8vw, 2.6rem);
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.28);
+        }
+
+        .butterfly-palak {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            padding: 8px 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(188, 19, 254, 0.25);
+            background: rgba(188, 19, 254, 0.07);
+            box-shadow: 0 0 20px rgba(188, 19, 254, 0.12);
+        }
+
+        .butterfly {
+            font-size: 26px;
+            transform-origin: center;
+            animation: flutterFloat 1.8s ease-in-out infinite;
+            filter: drop-shadow(0 0 12px rgba(188,19,254,0.25));
+            will-change: transform;
+        }
+
+        .butterfly-run {
+            position: relative;
+        }
+
+        @keyframes butterflyCarry {
+            0% { transform: translate(0, 0) rotate(-6deg) scale(1); }
+            35% { transform: translate(0, -18px) rotate(6deg) scale(1.08); }
+            65% { transform: translate(-10px, -10px) rotate(-4deg) scale(1.03); }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+        }
+
+        .butterfly-carry {
+            animation: butterflyCarry 3.2s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+        }
+
+        @keyframes flutterFloat {
+            0% { transform: translateY(0) rotate(-2deg) scale(1); }
+            50% { transform: translateY(-10px) rotate(4deg) scale(1.05); }
+            100% { transform: translateY(0) rotate(-2deg) scale(1); }
+        }
+
+        .palak-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2rem, 5.3vw, 3rem);
+            font-weight: 900;
+            color: #f3e8ff;
+            text-shadow: 0 0 18px rgba(188, 19, 254, 0.35);
+        }
 
         /* Dora Game Page */
         .dora-stage{position:relative;width:100%;height:100%;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at center,#1c0033 0%,#050010 100%);padding:20px;}
@@ -282,7 +396,7 @@
 #growth-page{
  
 background:
-linear-gradient(to top,#0a0a0a,#101d3b);
+linear-gradient(to top,#c652d3,#9965af);
  
 overflow:hidden;
  
@@ -475,7 +589,7 @@ margin-top:500px;
 #growth-page{
  
 background:
-linear-gradient(to top,#0a0a0a,#101d3b);
+linear-gradient(to top,#cca5da,#c148fd);
  
 overflow:hidden;
  
@@ -684,16 +798,34 @@ margin-top:500px;
         <canvas id="fw-canvas"></canvas>
         <div id="particle-container" style="position: absolute; width: 100%; height: 100%; top:0; left:0; pointer-events: none;"></div>
         <h1 class="hero-title">Happy 19th Birthday, BOSS</h1>
-        <p class="hero-sub">I once remember you telling me that your favorite color is purple, so I designed everything in purple just for you Boss .
+        <p class="hero-sub">I once remember you telling me that your favourite colour is purple, so I designed everything in purple just for you Boss .
  The Grand Entrance to Chapter 19</p>
-        
+
+        <!-- Special Day: 9 July + Crown + Butterfly Palak -->
+        <div class="july-special" aria-label="Special day celebration">
+            <div class="july-date" id="july-date">
+                <span class="crown" id="july-main-crown">👑</span>
+                <span class="date-text">9 July</span>
+            </div>
+
+            <div class="butterfly-palak" id="butterfly-palak">
+                <span class="butterfly" id="july-butterfly" aria-hidden="true">🦋</span>
+                <span class="palak-name" id="palak-name">palak</span>
+
+                <!-- Butterfly arrival crown (placed above palak) -->
+                <span class="crown-into-place" id="palak-top-crown">👑</span>
+            </div>
+        </div>
+
+
         <div class="special-box">
             Hh toh (future Advocate) meri saari case aapko hi solve krni h toh aap jldi se successful ho jaao.. ✨
         </div>
+
  
         <div class="btn-container">
             <span class="side-hint hint-left">tap kro boss idhar 👇</span>
-            <button class="btn-neon" onclick="startGrowthPage()">Begin The Surprise</button>
+            <button class="btn-neon" onclick="startGrowthPage()">Begin The Surprise tap here </button>
         </div>
     </section>
     <section id="growth-page" class="page">
@@ -773,14 +905,14 @@ margin-top:500px;
                 <h2 class="step-text">No matter what happens, I'll always be with you—in every joyful moment and through every difficult time...</h2>
                 <div class="btn-container">
                     <span class="side-hint hint-left">tap kro boss idhar 👇</span>
-                    <button class="btn-neon" onclick="nextStep(2)">Keep Going</button>
+                    <button class="btn-neon" onclick="nextStep(2)">Keep Going(tap here)</button>
                 </div>
             </div>
             <div id="step-2" class="step-content">
                 <h2 class="step-text">I hope you become successful very soon. Never give up on your dreams—I'll always believe in you and support you, no matter what.
 .</h2>
                 <div class="btn-container">
-                    <button class="btn-neon" onclick="nextStep(3)">Reveal It </button>
+                    <button class="btn-neon" onclick="nextStep(3)">Reveal It(tap here) </button>
                     <span class="side-hint hint-down">tap kro boss idhar 👆</span>
                 </div>
             </div>
@@ -788,7 +920,7 @@ margin-top:500px;
                 <h2 class="step-text" style="color: var(--gold); font-size: 2.5rem; font-weight: bold;">Welcome to Year 19! ✨</h2>
                 <div class="btn-container">
                     <span class="side-hint hint-up">tap kro boss idhar 👇</span>
-                    <button class="btn-neon" onclick="finishSlider()">Let's Celebrate</button>
+                    <button class="btn-neon" onclick="finishSlider()">Let's Celebrate(tap here)</button>
                 </div>
             </div>
             <div class="slider-dots">
@@ -809,7 +941,7 @@ margin-top:500px;
             <h2 id="celeb-hint" style="font-size: 1.5rem; margin-bottom: 30px; letter-spacing: 2px;">The Stage is Set...</h2>
             <div class="btn-container">
                 <span class="side-hint hint-left">tap kro boss idhar 👉 </span>
-                <button id="celeb-master-btn" class="btn-neon" onclick="celebFlow()">Turn On Lights</button>
+                <button id="celeb-master-btn" class="btn-neon" onclick="celebFlow()">Turn On Lights(tap here)</button>
             </div>
         </div>
     </section>
@@ -822,7 +954,15 @@ margin-top:500px;
                 <div class="message-card" id="message-card">
                     <h2 style="font-family: 'Dancing Script'; font-size: clamp(2rem, 5vw, 3.5rem); color: #d8b4fe; margin-bottom: 20px;">My Boss,</h2>
                     <p style="font-size: clamp(1rem, 2vw, 1.2rem); line-height: 1.8; color: rgba(255,255,255,0.8);">
-                        Today isn't just a date on the calendar; it's a celebration of the light you bring into my life. Turning 19 is about stepping into your own royalty. Every moment with you is like a frame from a beautiful movie, and I'm so lucky to be your co-star. May this year be filled with as much magic as you give to everyone around you.
+                         Today isn't just your birthday—it's a celebration of the amazing person you are. Turning 19 marks the beginning of another beautiful chapter filled with dreams, courage, and success.
+
+May you keep growing stronger, smiling brighter, and achieving everything you've ever wished for. No matter where life takes you, never stop believing in yourself.
+
+Always remember, no matter what life brings—whether it's your happiest moments or your toughest days—you'll never have to face them alone. I'll always be there to support you, stand by your side, and remind you how strong and amazing you truly are.
+
+Keep shining, keep inspiring, and always remember that I'll be cheering for your happiness every step of the way.
+
+Happy 19th Birthday, Boss! ❤️🎉.
                     </p>
                     <div class="btn-container" style="margin-top: 40px;">
                         <button class="btn-neon" style="animation: none;" onclick="transitionTo('gallery-page')">tap here</button>
@@ -954,8 +1094,9 @@ margin-top:500px;
                     gift.classList.add('gift-pop');
                 }
 
-                // 4 balloons complete: mapping message remove so next flow doesn't get overwritten
-                if (msg) msg.innerHTML = '';
+                // IMPORTANT: 4th balloon ka “Happiness” word pehle hi dikhna chahiye.
+                // Isliye msg ko abhi blank nahi kar rahe—teddy/gift ke time update hoga.
+
 
 
 
@@ -1144,7 +1285,7 @@ margin-top:500px;
  
             if (celebStep === 1) {
                 page.classList.add('bright'); lights.style.opacity = '1'; hint.innerText = "Let the colors fly!";
-                btn.innerText = "Fly Balloons"; celebStep = 2;
+                btn.innerText = "Fly Balloons(tap here)"; celebStep = 2;
             } else if (celebStep === 2) {
                 spawnBalloons(document.body); hint.innerText = "Almost there...";
                 btn.innerText = "Show The Message tap here "; celebStep = 3;
@@ -1254,12 +1395,13 @@ margin-top:500px;
  
         function startGrowthPage() {
             transitionTo("growth-page");
-            setTimeout(buildHeartCrown, 3000);   // crown starts growing the instant trunk appears
-            setTimeout(typeGrowthMessage, 7200);
+            setTimeout(buildHeartCrown, 900);   // start earlier to avoid hang feeling
+            setTimeout(typeGrowthMessage, 5200);
+
         }
  
-function typeGrowthMessage() {
-    const text = "Tumhe bhi apni life me bilkul isi tree ki tarah grow karna hai Boss ❤️🌳";
+        function typeGrowthMessage() {
+    const text = "Tumhe bhi apni life me bilkul iss heart tree ki tarah grow karna hai Boss ❤️🌳";
  
     let i = 0;
     const msg = document.getElementById("growth-message");
@@ -1275,10 +1417,52 @@ function typeGrowthMessage() {
         }
     }, 45);
 }
+
+        // ===== Hero: Butterfly carries crown and sets it above palak =====
+        function runPalakCrownAnimation() {
+            const butterfly = document.getElementById('july-butterfly');
+            const crownToPlace = document.getElementById('palak-top-crown');
+            const palakNameEl = document.getElementById('palak-name');
+            if (!butterfly || !crownToPlace || !palakNameEl) return;
+
+            // stop old animations if replayed
+            butterfly.classList.remove('butterfly-carry');
+            crownToPlace.classList.remove('carry-run');
+
+            // ensure crown hidden before start
+            crownToPlace.style.opacity = '0';
+
+            // Live writing: palak ko type effect se dikhayenge (pen-like)
+            palakNameEl.textContent = '';
+            palakNameEl.style.visibility = 'visible';
+            const name = 'palak';
+            let idx = 0;
+            const typeTimer = setInterval(() => {
+                palakNameEl.textContent += name.charAt(idx);
+                idx++;
+                if (idx >= name.length) clearInterval(typeTimer);
+            }, 90);
+
+            // play after a short delay so user sees butterfly first
+            setTimeout(() => {
+                butterfly.classList.add('butterfly-carry');
+                // crown starts slightly after butterfly movement begins
+                setTimeout(() => {
+                    crownToPlace.classList.add('carry-run');
+                }, 250);
+            }, 700);
+        }
+
+
+        // start on load (hero is first page)
+        window.addEventListener('load', () => {
+            runPalakCrownAnimation();
+        });
     </script>
     
 </body>
 </html>
+ 
  
 
 
